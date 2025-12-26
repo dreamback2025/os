@@ -5,7 +5,7 @@
 ProcessManager* init_process_manager() {
     ProcessManager* pm = (ProcessManager*)malloc(sizeof(ProcessManager));
     if (!pm) {
-        printf("错误: 进程管理器内存分配失败\n");
+        printf("Error: Process manager memory allocation failed\n");
         return NULL;
     }
     
@@ -14,7 +14,7 @@ ProcessManager* init_process_manager() {
     pm->ready_queue = NULL;
     pm->running_process = NULL;
     
-    // 初始化进程数组
+    // Initialize process array
     for (int i = 0; i < MAX_PROCESSES; i++) {
         pm->processes[i].pid = -1;
         strcpy(pm->processes[i].name, "");
@@ -35,7 +35,7 @@ ProcessManager* init_process_manager() {
 
 PCB* create_process(ProcessManager* pm, const char* name, int priority, int burst_time, int memory_size) {
     if (pm->process_count >= MAX_PROCESSES) {
-        printf("错误: 达到最大进程数限制\n");
+        printf("Error: Maximum number of processes reached\n");
         return NULL;
     }
     
@@ -65,7 +65,7 @@ PCB* create_process(ProcessManager* pm, const char* name, int priority, int burs
 
 PCB* create_process_manual(ProcessManager* pm, int pid, const char* name, int priority, int burst_time, int memory_size) {
     if (pm->process_count >= MAX_PROCESSES) {
-        printf("错误: 达到最大进程数限制\n");
+        printf("Error: Maximum number of processes reached\n");
         return NULL;
     }
     

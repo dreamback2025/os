@@ -8,17 +8,17 @@
 #define MAX_PARTITIONS 10
 #define MAX_MEMORY_SIZE 1024
 
-// 分区结构
+// Partition structure
 typedef struct {
     int id;
     int start_addr;
     int size;
-    int allocated_size;  // 实际分配的大小
-    int process_id;      // 分配给的进程ID
+    int allocated_size;  // Size actually allocated
+    int process_id;      // Process ID assigned to
     bool is_allocated;
 } Partition;
 
-// 内存管理器结构
+// Memory manager structure
 typedef struct {
     Partition partitions[MAX_PARTITIONS];
     int partition_count;
@@ -26,7 +26,7 @@ typedef struct {
     int free_memory;
 } MemoryManager;
 
-// 函数声明
+// Function declarations
 MemoryManager* init_memory_manager(int total_memory, int* partition_sizes, int count);
 int allocate_partition(MemoryManager* mm, int process_id, int size);
 int allocate_best_fit(MemoryManager* mm, int process_id, int size);

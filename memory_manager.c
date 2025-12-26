@@ -3,13 +3,13 @@
 
 MemoryManager* init_memory_manager(int total_memory, int* partition_sizes, int count) {
     if (count > MAX_PARTITIONS) {
-        printf("错误: 分区数量超过最大限制\n");
+        printf("Error: Number of partitions exceeds maximum limit\n");
         return NULL;
     }
     
     MemoryManager* mm = (MemoryManager*)malloc(sizeof(MemoryManager));
     if (!mm) {
-        printf("错误: 内存分配失败\n");
+        printf("Error: Memory allocation failed\n");
         return NULL;
     }
     
@@ -31,7 +31,7 @@ MemoryManager* init_memory_manager(int total_memory, int* partition_sizes, int c
     
     // 检查总内存是否超过限制
     if (current_addr > MAX_MEMORY_SIZE) {
-        printf("错误: 总内存大小超过限制\n");
+        printf("Error: Total memory size exceeds limit\n");
         free(mm);
         return NULL;
     }
