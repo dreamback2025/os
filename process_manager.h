@@ -9,7 +9,7 @@
 #define MAX_PROCESSES 50
 #define PROCESS_NAME_LEN 20
 
-// 进程状态枚举
+// Process state enumeration
 typedef enum {
     NEW = 0,
     READY,
@@ -18,32 +18,32 @@ typedef enum {
     TERMINATED
 } ProcessState;
 
-// 进程控制块结构
+// Process Control Block structure
 typedef struct PCB {
-    int pid;                    // 进程ID
-    char name[PROCESS_NAME_LEN]; // 进程名
-    ProcessState state;         // 进程状态
-    int priority;              // 优先级
-    int arrival_time;          // 到达时间
-    int burst_time;            // 执行时间
-    int remaining_time;        // 剩余执行时间
-    int memory_size;           // 需要的内存大小
-    int memory_addr;           // 分配的内存地址
-    int waiting_time;          // 等待时间
-    int turnaround_time;       // 周转时间
-    struct PCB* next;          // 指向下一个进程的指针
+    int pid;                    // Process ID
+    char name[PROCESS_NAME_LEN]; // Process name
+    ProcessState state;         // Process state
+    int priority;              // Priority
+    int arrival_time;          // Arrival time
+    int burst_time;            // Burst time
+    int remaining_time;        // Remaining burst time
+    int memory_size;           // Required memory size
+    int memory_addr;           // Allocated memory address
+    int waiting_time;          // Waiting time
+    int turnaround_time;       // Turnaround time
+    struct PCB* next;          // Pointer to next process
 } PCB;
 
-// 进程管理器结构
+// Process manager structure
 typedef struct {
     PCB processes[MAX_PROCESSES];
     int process_count;
     int current_pid;
-    PCB* ready_queue;          // 就绪队列
-    PCB* running_process;      // 当前运行的进程
+    PCB* ready_queue;          // Ready queue
+    PCB* running_process;      // Currently running process
 } ProcessManager;
 
-// 函数声明
+// Function declarations
 ProcessManager* init_process_manager();
 PCB* create_process(ProcessManager* pm, const char* name, int priority, int burst_time, int memory_size);
 PCB* create_process_manual(ProcessManager* pm, int pid, const char* name, int priority, int burst_time, int memory_size);

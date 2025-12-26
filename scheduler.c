@@ -6,7 +6,7 @@
 Scheduler* init_scheduler(ProcessManager* pm, MemoryManager* mm) {
     Scheduler* scheduler = (Scheduler*)malloc(sizeof(Scheduler));
     if (!scheduler) {
-        printf("错误: 调度器内存分配失败\n");
+        printf("Error: Scheduler memory allocation failed\n");
         return NULL;
     }
     
@@ -327,11 +327,11 @@ void print_system_status(Scheduler* scheduler) {
 void save_execution_log(Scheduler* scheduler, const char* filename) {
     FILE* file = fopen(filename, "w");
     if (!file) {
-        printf("错误: 无法创建日志文件 %s\n", filename);
+        printf("Error: Cannot create log file %s\n", filename);
         return;
     }
     
-    fprintf(file, "系统执行日志\n");
+    fprintf(file, "System execution log\n");
     fprintf(file, "时间: %d\n", scheduler->current_time);
     fprintf(file, "进程数量: %d\n", scheduler->pm->process_count);
     
@@ -351,7 +351,7 @@ void save_execution_log(Scheduler* scheduler, const char* filename) {
 void load_execution_log(Scheduler* scheduler, const char* filename) {
     FILE* file = fopen(filename, "r");
     if (!file) {
-        printf("错误: 无法打开日志文件 %s\n", filename);
+        printf("Error: Cannot open log file %s\n", filename);
         return;
     }
     

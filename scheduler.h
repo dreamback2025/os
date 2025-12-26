@@ -4,9 +4,9 @@
 #include "process_manager.h"
 #include "memory_manager.h"
 
-#define TIME_QUANTUM 3  // 时间片大小
+#define TIME_QUANTUM 3  // Time quantum size
 
-// 调度器结构
+// Scheduler structure
 typedef struct {
     ProcessManager* pm;
     MemoryManager* mm;
@@ -14,14 +14,14 @@ typedef struct {
     int time_quantum;
 } Scheduler;
 
-// 调度算法枚举
+// Scheduling algorithm enumeration
 typedef enum {
     ROUND_ROBIN = 0,
     FCFS,
     PRIORITY
 } SchedulingAlgorithm;
 
-// 函数声明
+// Function declarations
 Scheduler* init_scheduler(ProcessManager* pm, MemoryManager* mm);
 void schedule_processes(Scheduler* scheduler, SchedulingAlgorithm algo);
 void round_robin_schedule(Scheduler* scheduler);
