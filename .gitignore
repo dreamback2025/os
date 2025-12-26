@@ -1,0 +1,19 @@
+```
+# Compiled and build artifacts
+*.o
+*.obj
+*.out
+multi_process_scheduler
+
+# Dependencies
+node_modules/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Editors
+.vscode/
+.idea/
+```
